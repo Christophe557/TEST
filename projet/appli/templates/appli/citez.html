@@ -1,0 +1,30 @@
+{% extends 'appli/base.html' %}
+
+{% block content %}
+    <section class="intro">
+        <h2> Ecrivez une nouvelle citation et entrez dans la légende ! </h2>
+    </section>
+    <section class="formulaire">
+        <form action="{% url 'appli:citez' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="{{ form.texte.id_for_label }}" class="control-label">Ecrivez votre citation ici ...</label>
+            </div>
+            <div class:control-box>
+                {{ form.texte }}
+            </div>
+            <div>
+                <label for="{{ form.auteur.id_for_label }}" class="control-label">Votre nom ou pseudo:</label>
+            </div>
+            <div class:control-box>
+                {{ form.auteur }}
+            </div>
+            <button type="submit" class="bouton_valid">Envoyer</button>
+            
+        </form>
+    </section>
+
+    <section class="listing">
+        {% include 'appli/list.html' with list_title='Les dernières citations :' %}
+    </section>
+{% endblock %}

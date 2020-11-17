@@ -1,0 +1,13 @@
+{% extends 'appli/base.html' %}
+
+{% block content %}
+    <section class="intro">
+        <h2> Tout ce qui est écrit continue de vivre ; tout ce qui n'est que parler meurt.  </h2>
+    </section>
+    <section class="cta">
+        <a href="{% url 'appli:citez' %}" class="bouton_citer"  target="_blank">Ecrivez votre pensée !</a>
+    </section>
+    <section class="listing">
+        {% include 'appli/list.html' with list_title='La dernière citation :' %}
+    </section>
+{% endblock %}

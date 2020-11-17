@@ -1,0 +1,30 @@
+{% extends 'appli/base.html' %}
+
+{% block content %}
+<!-- autres possibilités pour les formulaires (fichier inactif) : -->
+<p>==============================</p>
+<!-- avec du html classique : -->
+<form action="/appli/citez/" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="id-texte">Votre citation :</label>
+        <textarea name="texte" id="id-texte" rows=5 cols=50 placeholder="Homme libre, toujours tu chériras la mer !"></textarea>
+    </p>
+    <p>
+        <label for="id-auteur">Votre nom ou pseudo:</label>
+        <input type="text" name="auteur" id="id-auteur" placeholder="Charles Baudelaire"/>
+    </p>
+    <input type="submit" value ="Envoyer"/>
+
+</form>
+
+<p>==============================</p>
+<!-- en utilisant la méthode .as_p de django -->
+<form action="/appli/citez/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value ="Envoyer"/>
+
+</form>
+{% include 'appli/list.html' with list_title='Les dernières citations :' %}
+{% endblock %}

@@ -14,9 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
+from django.conf import settings
+from appli import views
+
+#---- activation en prod ------------
+from django.views.static import serve
+#-----------------------------------
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^$', views.index, name='index'),
+    re_path(r'^appli/', include('appli.urls', namespace='appli')),
+
+#---- activation en prod pour servir fichiers STATIC ------------
+#---- en dév (serveur local Django) quand DEBUG=False -----------
+#---- et lancer ./manage.py runserver --insecure ----------------
+   re_path(r'^static/(?P<path>.*)$', serve,{'document_root':settings.STATIC_ROOT}),
+#-----------------------------------
+
 ]
+
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+            re_path(r'^__debug__/', include(debug_toolbar.urls)),
+            ] + urlpatterns

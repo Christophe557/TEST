@@ -1,0 +1,10 @@
+{% extends 'appli/base.html' %}
+
+{% block content %}
+    <section class="intro">
+        <h2>Merci {{ new_quote.auteur }} ! Votre citation a bien été enregistrée !</h2>
+    </section>
+    <section class="listing">
+        {% include 'appli/list.html' with list_title='Les dernières citations :' %}
+    </section>
+{% endblock %}

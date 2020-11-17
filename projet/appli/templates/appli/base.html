@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta charset="utf-8" />
+        {% load static %}
+        <!-- css -->
+        <link rel="stylesheet" href="{% static 'appli/css/style.css' %}" />
+        <!-- <link rel="stylesheet" href="../../static/appli/css/style.css" /> -->
+        <title>Site Test</title>
+    </head>
+    <body>
+        <div id="bloc-page">    
+            <header>
+                <div id=entete>
+                    <figure>
+                        <img src="{%static 'appli/img/rose.jpg' %}" alt="Une rose rouge" />
+                    </figure>
+                    <div class="titre">
+                        <h1>
+                            <a href="{% url 'index' %}">Arroudennad</a>
+                        </h1>
+                        <h2>Le site qui cite</h2>
+                    </div>
+                </div>
+
+                <ul class="navbar">
+                    <li><a href="{% url 'index' %}" class="bouton_menu">Accueil</a></li>
+                    <li><a href="{% url 'appli:citations' %}" class="bouton_menu">Les citations</a></li>
+                    <li><a href="{% url 'appli:apropos' %}" class="bouton_menu">A propos</a></li>
+                </ul>
+    
+            </header>
+            <main>
+                {% block content %}{% endblock %}
+            </main>
+            <footer>
+                Site expérimental mais génial.
+            </footer>
+    
+        </div>
+    </body>
+</html>

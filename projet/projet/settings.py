@@ -26,19 +26,20 @@ SECRET_KEY = 'vrd33g#vq5&euc&so4w-+%z2+w6vik#nz_+0tzc@+1t#a_342_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'appli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'appli',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'projet.urls'
@@ -124,5 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'), )
+
+#---- activation en prod ??? ne sert pas a priori------------
+#STATIC_ROOT = '/static/'
+#-----------------------------------
+
+#chemin : projet/static
+STATICFILES_DIRS =[os.path.join(BASE_DIR,'static'), os.path.join(BASE_DIR,'appli/static'), ]
+INTERNAL_IPS = ['127.0.0.1']
 

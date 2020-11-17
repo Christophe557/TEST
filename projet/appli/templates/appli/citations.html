@@ -1,0 +1,15 @@
+{% extends 'appli/base.html' %}
+
+{% block content %}
+
+    <section class="intro">
+        <h2> </h2>
+    </section>
+    <section class="cta">
+        <a href="{% url 'appli:citez' %}" class="bouton_citer">Ecrivez une nouvelle citation !</a>
+    </section>
+    <section class="listing">
+        {% include 'appli/list.html' with list_title='Toutes les citations :' %}
+    </section>
+{% endblock %}
+

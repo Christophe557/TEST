@@ -1,0 +1,28 @@
+<div class="intro">
+    <h2>{{list_title}}</h2>
+</div>
+
+<div class="list-citations">
+{% for quote in quotes %}
+
+<div class="citation">
+
+    <p>"{{quote.texte}}"</p>
+    <p ALIGN="right">{{quote.auteur}}, le {{quote.created_at}}</p>
+</div>
+    
+{% endfor %}
+</div>
+
+{% if paginate %}
+    <div class="pagination">
+        {% if quotes.has_previous %}
+           <a href='?page={{ quotes.previous_page_number }}' class="bouton_page">Page précédente</a>
+        {% endif %}
+        {% if quotes.has_next %}
+           <a href='?page={{ quotes.next_page_number }}' class="bouton_page">Page suivante</a>
+        {% endif %}
+    </div>
+{% endif %}
+
+
