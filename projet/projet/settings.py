@@ -21,13 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vrd33g#vq5&euc&so4w-+%z2+w6vik#nz_+0tzc@+1t#a_342_'
+SECRET_KEY = 'vd_3y7-5k0$^gg1*2cpq0=@h7(q!rw)&wgod=%=(_p33!p)td='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#==== Dev ou Prod ? ====
+#DEBUG = True   # en Dev
+DEBUG = False   # en Prod
 
-ALLOWED_HOSTS = ['127.0.0.1']
+#ALLOWED_HOSTS = ['127.0.0.1']  # en Dev
+ALLOWED_HOSTS = ['www.vech7842.odns.fr', 'solidsketch.com'] # en Prod
 
+#========================
 
 # Application definition
 
@@ -77,17 +81,33 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
+#==== Dev ou Prod ? ====
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'mabase',
+#        'USER': 'vech',
+#        'PASSWORD': '0000',
+#        'HOST': 'localhost',
+#        'PORT': 5432,
+#    }
+#} # en Dev
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mabase',
-        'USER': 'vech',
-        'PASSWORD': '0000',
+        'NAME': 'vech7842_data',
+        'USER': 'vech7842_admin1',
+        'PASSWORD': 'XUwC8Qudad4VQq7',
         'HOST': 'localhost',
         'PORT': 5432,
     }
-}
+} # en Prod
 
+
+
+#========================
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
