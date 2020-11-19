@@ -15,6 +15,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR='/.../TEST/projet'
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,11 +26,11 @@ SECRET_KEY = 'vd_3y7-5k0$^gg1*2cpq0=@h7(q!rw)&wgod=%=(_p33!p)td='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #==== Dev ou Prod ? ====
-#DEBUG = True   # en Dev
-DEBUG = False   # en Prod
+DEBUG = True   # en Dev
+#DEBUG = False   # en Prod
 
-#ALLOWED_HOSTS = ['127.0.0.1']  # en Dev
-ALLOWED_HOSTS = ['www.vech7842.odns.fr', 'solidsketch.com'] # en Prod
+ALLOWED_HOSTS = ['127.0.0.1']  # en Dev
+#ALLOWED_HOSTS = ['www.vech7842.odns.fr', 'solidsketch.com'] # en Prod
 
 #========================
 
@@ -83,27 +84,27 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 
 
 #==== Dev ou Prod ? ====
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'mabase',
-#        'USER': 'vech',
-#        'PASSWORD': '0000',
-#        'HOST': 'localhost',
-#        'PORT': 5432,
-#    }
-#} # en Dev
-#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vech7842_data',
-        'USER': 'vech7842_admin1',
-        'PASSWORD': 'XUwC8Qudad4VQq7',
+        'NAME': 'mabase',
+        'USER': 'vech',
+        'PASSWORD': '0000',
         'HOST': 'localhost',
         'PORT': 5432,
     }
-} # en Prod
+} # en Dev
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'vech7842_data',
+#        'USER': 'vech7842_admin1',
+#        'PASSWORD': 'XUwC8Qudad4VQq7',
+#        'HOST': 'localhost',
+#        'PORT': 5432,
+#    }
+#} # en Prod
 
 
 
@@ -141,17 +142,29 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
-#---- activation en prod ??? ne sert pas a priori------------
-#STATIC_ROOT = '/static/'
-#-----------------------------------
 
 #chemin : projet/static
-STATICFILES_DIRS =[os.path.join(BASE_DIR,'static'), os.path.join(BASE_DIR,'appli/static'), ]
+
+# pour Django debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
+
+#Configuration fichiers statiques pour la production:
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Project_ROOT = '/.../TEST/projet/projet'
+
+
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = '/.../TEST/projet/projet/staticfiles'
+
+
+#pour collecstatic
+STATICFILES_DIRS =[os.path.join(PROJECT_ROOT, 'static')]
+# STATICFILES_DIR = ['/.../TEST/projet/projet/static']
