@@ -15,6 +15,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR='/.../TEST/projet'
 
 
 # Quick-start development settings - unsuitable for production
@@ -141,17 +142,27 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
-#---- activation en prod ??? ne sert pas a priori------------
-#STATIC_ROOT = '/static/'
-#-----------------------------------
 
-#chemin : projet/static
-STATICFILES_DIRS =[os.path.join(BASE_DIR,'static'), os.path.join(BASE_DIR,'appli/static'), ]
+# pour Django debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
+
+#Configuration fichiers statiques pour la production:
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Project_ROOT = '/.../TEST/projet/projet'
+
+
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = '/.../TEST/projet/projet/staticfiles'
+
+
+#pour collecstatic
+STATICFILES_DIRS =[os.path.join(PROJECT_ROOT, 'static')]
+# STATICFILES_DIR = ['/.../TEST/projet/projet/static']

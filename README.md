@@ -26,6 +26,8 @@ http://localhost/admin
 
 Versions :
 
+19/11/2020 version 1 - développement [config settings.py pour les fichiers static]
+18/11/2020 version 0 - production [config settings.py en prod.]
 17/11/2020 version 0 - développement
 08/11/2020 initialisation (projet vide)
 
